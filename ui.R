@@ -10,7 +10,7 @@ shinyUI(fluidPage(
     sidebarPanel(
         width = 3,
         checkboxGroupInput("size","Size",
-                           c("Less than 400 m²"="40m",
+                           c("Less than 40 m²"="40m",
                              "40-69.9 m²"="40-69.9m",
                              "70-99.9 m²"="70-99.9m",
                              "100-159.9 m²"="100-159.9m",
