@@ -1,0 +1,11 @@
+name: hk_housing
+title:
+account: maxxx88
+server: shinyapps.io
+appId: 150945
+bundleId: 679194
+url: https://maxxx88.shinyapps.io/hk_housing/
+when: 1484378929.81506
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: .RData|data/.DS_Store|data/HK_Domestic_1.csv|data/HK_Domestic_10.csv|data/HK_Domestic_2.csv|data/HK_Domestic_3.csv|data/HK_Domestic_4.csv|data/HK_Domestic_5.csv|data/HK_Domestic_6.csv|data/HK_Domestic_7.csv|data/HK_Domestic_8.csv|data/HK_Domestic_9.csv
