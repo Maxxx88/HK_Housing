@@ -13,6 +13,69 @@ This application will helps you to analyse the real estate market in HK:
 - the stock, the renting, sales (numbers, $ figures and indice)
 - forecast
 
+For example, teh forecast for the sales is the following:
+```{r, message=FALSE, warning=FALSE, echo = FALSE}
+ 
+library(readxl)
+library(forecast)
+library(plotly)
+
+filename = "./data/HK_Domestic.xlsx"
+
+for2ggplot <- function(forec.obj, data.color = 'blue', fit.color = 'red', forec.color = 'black',
+                           lower.fill = 'darkgrey', upper.fill = 'grey', format.date = F)
+    {
+        serie.orig = forec.obj$x
+        serie.fit = forec.obj$fitted
+        pi.strings = paste(forec.obj$level, '%', sep = '')
+
+        if(format.date)
+            dates = as.Date(time(serie.orig))
+        else
+            dates = time(serie.orig)
+
+        serie.df = data.frame(date = dates, serie.orig = serie.orig, serie.fit = serie.fit)
+
+        forec.M = cbind(forec.obj$mean, forec.obj$lower[, 1:2], forec.obj$upper[, 1:2])
+        forec.df = as.data.frame(forec.M)
+        colnames(forec.df) = c('forec.val', 'l0', 'l1', 'u0', 'u1')
+
+        if(format.date)
+            forec.df$date = as.Date(time(forec.obj$mean))
+        else
+            forec.df$date = time(forec.obj$mean)
+
+        p = ggplot() +
+            geom_line(aes(date, serie.orig, colour = 'data'), data = serie.df) +
+            geom_line(aes(date, serie.fit, colour = 'fit'), data = serie.df) +
+            scale_y_continuous() +
+            geom_ribbon(aes(x = date, ymin = l0, ymax = u0, fill = 'lower'), data = forec.df, alpha = I(0.4)) +
+            geom_ribbon(aes(x = date, ymin = l1, ymax = u1, fill = 'upper'), data = forec.df, alpha = I(0.3)) +
+            geom_line(aes(date, forec.val, colour = 'forecast'), data = forec.df) +
+            scale_color_manual('Series', values=c('data' = data.color, 'fit' = fit.color, 'forecast' = forec.color)) +
+            scale_fill_manual('P.I.', values=c('lower' = lower.fill, 'upper' = upper.fill))
+
+        if (format.date)
+            p = p + scale_x_date()
+
+        p
+    }
+
+    rentIndiceFormat = read_excel(filename, sheet = 11, na = "-")
+    mydata = as.data.frame(rentIndiceFormat)
+      rownames(mydata) <- mydata[,1]
+      mydata = mydata[,c(2:13)]
+      colnames(mydata) <- month.abb
+      mydata <- ts(as.vector(t(as.matrix(mydata))), start=c(1993,1), end=c(2016,11), frequency=12)
+      
+      diff_data2 = diff(mydata)
+      m_aa2 = auto.arima(diff_data2)
+      mydata_arima2 = forecast(m_aa2)
+      
+      for2ggplot(mydata_arima2)
+```
+
+
 Datasource
 ========================================================
 

@@ -32,6 +32,7 @@ shinyServer(function(input, output) {
     stock2 = read_excel(filename, sheet = 8, na = "-")
     salesIndiceFormat = read_excel(filename, sheet = 9, na = "-")
     salesIndiceFormatSize = read_excel(filename, sheet = 10, na = "-")
+    rentIndiceFormat = read_excel(filename, sheet = 11, na = "-")
 
 
     for2ggplot <- function(forec.obj, data.color = 'blue', fit.color = 'red', forec.color = 'black',
