@@ -13,6 +13,10 @@ This application will helps you to analyse the real estate market in HK:
 - the stock, the renting, sales (numbers, $ figures and indice)
 - forecast
 
+For example, teh forecast for the sales is the following:
+![plot of chunk unnamed-chunk-1](HK_housing-figure/unnamed-chunk-1-1.png)
+
+
 Datasource
 ========================================================
 

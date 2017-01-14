@@ -1,11 +1,11 @@
-name: hk_housing
-title:
+name: HK_Housing
+title: HK_Housing
 account: maxxx88
 server: shinyapps.io
 appId: 150945
-bundleId: 679194
+bundleId: 679279
 url: https://maxxx88.shinyapps.io/hk_housing/
-when: 1484378929.81506
+when: 1484391829.85105
 asMultiple: FALSE
 asStatic: FALSE
-ignoredFiles: .RData|data/.DS_Store|data/HK_Domestic_1.csv|data/HK_Domestic_10.csv|data/HK_Domestic_2.csv|data/HK_Domestic_3.csv|data/HK_Domestic_4.csv|data/HK_Domestic_5.csv|data/HK_Domestic_6.csv|data/HK_Domestic_7.csv|data/HK_Domestic_8.csv|data/HK_Domestic_9.csv
+ignoredFiles: HK_housing-rpubs.html|HK_housing.html|HK_housing.md|HK_housing.Rmd|HK_housing.Rpres|README.md|data/.DS_Store|HK_housing-figure/unnamed-chunk-1-1.png|HK_housing-figure/unnamed-chunk-2-1.png
